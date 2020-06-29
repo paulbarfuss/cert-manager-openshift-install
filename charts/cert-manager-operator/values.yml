@@ -1,0 +1,36 @@
+acme:
+  accountKey: "letsencrypt-account-key-secret"
+  apiServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+  selectorZones:
+    - "example.com"
+    - "www.example.com"
+  emailAddress: "admin@example.com"
+  env: "staging"
+  issuerKind: ClusterIssuer
+
+# AWS Secret Access Key
+secrets:
+  namespace: "cert-manager"
+  name: "cert-manager-secret"
+  secret: ""
+
+# Route53 ClusterIssuer
+route53:
+  awsRegion: "us-east-1"
+  awsAccessKeyId: ""
+
+# RFC2136 ClusterIssuer for nsupdate
+rfc2136:
+  dnsNameServer: "10.8.8.8"
+  tsigKeyAlgorithm: "hmac256"
+  tsigKeyName: "tsig_key_name"
+  tsigOcpSecretKey: "tsig_ocp_secret_key"
+
+# Generate Certificate CRDs
+certificate:
+  name: "CertificateName"
+  issuerRef: "LetsEncryptStaging"
+  issuerKind: "ClusterIssuer"
+  dnsNames:
+    - "example.com"
+    - "www.example.com"
