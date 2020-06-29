@@ -1,0 +1,21 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: {{ .Values.acme.issuerKind }}
+metadata:
+  name: letsencrypt-{{ .Values.acme.env }}
+spec:
+  acme:
+    email: {{ .Values.acme.email }}
+    server: {{ .Values.acme.apiServer }}
+    privateKeySecretRef:
+      name: {{ .Values.acme.accountKey }}
+    solvers:
+      - selector:
+          dnsZones: {{ .Values.acme.selectorZones }}
+      dns01:
+        route53:
+          region: {{ .Values.route53.awsRegion }}
+          accessKeyID: {{ .Values.route53.awsAccessKeyId }}
+          secretAccessKeySecretRef:
+            name: {{ .Values.awsSecretAccessKey.secretName }}
+            key: "aws-secret-access-key"

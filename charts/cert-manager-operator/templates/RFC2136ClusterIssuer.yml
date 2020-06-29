@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: {{ .Values.rfc2136.issuerKind }}
+metadata:
+  name: letsencrypt-rfc2136-{{ .Values.acme.env }}
+spec:
+  acme:
+    email: {{ .Values.acme.emailAddress }}
+    privateKeySecretRef:
+      name: {{ .Values.dns.acme.accountKey }}
+    server: {{ .Values.dns.acme.apiServer }}
+    solvers:
+    - selector:
+        dnsZones: {{ .Values.acme.selectorZones }}
+    - dns01:
+        rfc2136:
+          nameserver: {{ .Values.rfc2136.dnsNameServer }}
+          tsigAlgorithm: {{ .Values.rfc2136.tsigKeyAlgorithm }}
+          tsigKeyName: {{ .Values.rfc2136.tsigKeyName }}
+          tsigSecretSecretRef:
+            name: "tsig_key"
+            key: tsig-secret-key

@@ -1,14 +1,3 @@
-# cert-manager-openshift-install
+# cert-manager-operator
 
-Install operator with helm3:
-
-```bash
-oc new-project cert-manager
-
-helm install \
-  cert-manager jetstack/cert-manager \
-  --namespace cert-manager \
-  --version v0.15.0 \
-  --set 'extraArgs={--dns01-recursive-nameservers=8.8.8.8:53\,1.1.1.1:53}'
-```
-
+[README](charts/cert-manager-operator/README.md)
