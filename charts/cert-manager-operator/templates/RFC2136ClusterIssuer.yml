@@ -1,3 +1,7 @@
+{{- if .Values.rfc2136 }}
+{{- if .Values.dns }}
+{{- if .Values.acme }}
+---
 apiVersion: cert-manager.io/v1alpha2
 kind: {{ .Values.rfc2136.issuerKind }}
 metadata:
@@ -19,3 +23,6 @@ spec:
           tsigSecretSecretRef:
             name: {{ .Values.secrets.name }}
             key: "cert-manager-secret"
+{{- end }}
+{{- end }}
+{{- end }}

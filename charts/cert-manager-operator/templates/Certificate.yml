@@ -1,3 +1,4 @@
+{{- if .Values.certificate }}
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
@@ -11,3 +12,4 @@ spec:
     kind: {{ .Values.certificate.issuerKind }}
   dnsNames: 
     - {{ .Values.certificate.dnsNames }}
+{{- end }}
