@@ -17,5 +17,5 @@ spec:
           tsigAlgorithm: {{ .Values.rfc2136.tsigKeyAlgorithm }}
           tsigKeyName: {{ .Values.rfc2136.tsigKeyName }}
           tsigSecretSecretRef:
-            name: "tsig_key"
-            key: tsig-secret-key
+            name: {{ .Values.secrets.name }}
+            key: "cert-manager-secret"

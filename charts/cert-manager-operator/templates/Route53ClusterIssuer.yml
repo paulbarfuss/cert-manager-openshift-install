@@ -17,5 +17,5 @@ spec:
           region: {{ .Values.route53.awsRegion }}
           accessKeyID: {{ .Values.route53.awsAccessKeyId }}
           secretAccessKeySecretRef:
-            name: {{ .Values.awsSecretAccessKey.secretName }}
-            key: "aws-secret-access-key"
+            name: {{ .Values.secrets.name }}
+            key: "cert-manager-secret"

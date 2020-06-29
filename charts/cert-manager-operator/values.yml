@@ -9,9 +9,9 @@ acme:
   issuerKind: ClusterIssuer
 
 # AWS Secret Access Key
-awsSecretAccessKey:
+secrets:
   namespace: "cert-manager"
-  name: "aws_secret_access_key"
+  name: "cert-manager-secret"
   secret: ""
 
 # Route53 ClusterIssuer
